@@ -129,7 +129,6 @@ class PrivateRecipeApiTest(TestCase):
         tag1 = sample_tag(user=self.user, name='Vegan')
         tag2 = sample_tag(user=self.user, name='dessert')
 
-
         payload = {
             'title': 'Rnaodmd',
             'tags': [tag1.id, tag2.id],
@@ -149,7 +148,6 @@ class PrivateRecipeApiTest(TestCase):
         self.assertEqual(tags.count(), 2)
         self.assertIn(tag1, tags)
         self.assertIn(tag2, tags)
-
 
     def test_create_recipe_with_ingredients(self):
         """TEst for creating recipe with ingredient"""

@@ -30,7 +30,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     )
     tags = serializers.PrimaryKeyRelatedField(
         many=True,
-        queryset=Ingredient.objects.all()
+        queryset=Tag.objects.all()
     )
 
     class Meta:

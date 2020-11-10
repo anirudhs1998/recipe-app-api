@@ -50,9 +50,13 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Retrieve recipes for authenticate user"""
         return self.queryset.filter(user=self.request.user).order_by('-id')
 
-    def get_serializer_class(self):
+    def get_serializer_class(self):  # We are overriding the default function
         """Return appropriate serializer_class"""
         if self.action == 'retrieve':
             return serializers.RecipeDetailSerializer
 
         return self.serializer_class
+
+    def perform_create(self, serializer):
+        """Create a new recipe"""
+        serializer.save(user=self.request.user)
